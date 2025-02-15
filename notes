@@ -1,0 +1,14 @@
+
+
+export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
+
+python3 create_iceberg.py 10
+
+chmod +x spark-mergeinto.sh
+./spark-mergeinto.sh
+
+aws s3tables delete-table \
+    --table-bucket-arn XX \
+    --namespace default \
+    --name test_table
+
